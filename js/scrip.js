@@ -18,7 +18,24 @@ if (userPin===savedPin){
 if(ingresar){
     let deuda = 3200;
     let opcion =prompt ("Elegi una opcion: N°1-Saldo de Deuda. N°2- Pagar Deuda. N°3-Recarga SoS. N°4 Stock de Celulares. N°5 Solicitar turno para atencion personal . N°6 Presiona x para finalizar ");
-    const listaCelular = ["Moto E32 64GB " , "Samsung Galaxy A22 5G" ,"Samsung Galaxy A13 128GB" , "TCL 20E 64GB"]
+    
+    const listaCelular = [{
+        marca: "Motorola",
+        modelo: "Moto E32 64GB "
+    },
+    {
+        marca: "Samsung",
+        modelo: "Samsung Galaxy A22 5G"
+    },
+    {
+        marca: "Samsung",
+        modelo: "Samsung Galaxy A13 128GB"
+    },
+    {
+        marca: "TCL",
+        modelo: "TCL 20E 64GB"
+    }
+]
 
     while (opcion!= "x" &&opcion !="X" ) {
 
@@ -45,11 +62,15 @@ if(ingresar){
                     alert ("Tu nuevo saldo es $" +deuda);
                     break;
                
-                  case "4":
-                    for(let i = 0; i<listaCelular.length; i++){
-                        alert(listaCelular[i]);
-                    } break; 
-
+                    case "4":
+                        for (let i = 0; i < listaCelular.length; i++) {
+                            alert(JSON.stringify(listaCelular[i]));
+                        }
+                        let marcaSeleccionada = prompt("Que celular quieres?")
+                        let celuElegido = listaCelular.filter(celu => celu.marca === marcaSeleccionada)
+                        alert(`Elegiste ${JSON.stringify(celuElegido)}`)
+                        break;
+                        
                     case "5":
                         for (let i =1 ; 1<=2; i++ ){
                             let horario = parseInt(prompt("Ingresa el horario del turno a solicitar"));
@@ -75,7 +96,6 @@ if(ingresar){
 
 
 alert("Finalizado")
-
 
 class Tienda{
     constructor(nombre,direccion,propietario,rubro){
